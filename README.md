@@ -11,7 +11,7 @@ Dando la posibilidad de conectar el endpoint a cualquier webhook que se tenga pa
 CuitGPT leverages several key components of Cloudflare's platform to power his application. CuitGPT RAG (Retrieval-Augmented Generation) app utilizes the @cf/baai/bge-base-en-v1.5 embeddings model and showcases Cloudflare’s capabilities in enhancing AI-driven services.
 With Cloudflare Workers AI, CuitGPT handles the retrieval of information from APIs for CuitGPT, including fetching data and embedding it into his application. The application possesses data based on two main types of information— Person by DNI or Juridic Person by CUIT. Cloudflare facilitates this by pulling data from APIs and outputting it into JSON format, allowing real-time JSON responses that deliver relevant information based on user queries—critical for CuitGPT’s functionality.
 
-#para luego en consola ejecutar:
+##para luego en consola ejecutar:
 
 ```
 wrangler dev
