@@ -1,15 +1,17 @@
 {
-  "name": "ai-example",
-  "version": "0.0.0",
+  "name": "rag",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy",
     "start": "wrangler dev"
   },
   "devDependencies": {
-    "wrangler": "^3.22.4"
+    "wrangler": "^3.34.2"
   },
   "dependencies": {
-    "hono": "^4.5.6"
+    "@cloudflare/ai": "^1.0.47",
+    "hono": "^4.5.11",
+    "npmx": "^0.0.0"
   }
 }
