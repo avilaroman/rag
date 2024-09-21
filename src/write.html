@@ -3,25 +3,52 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Write | Cloudflare RAG Example</title>
+  <title>CuitGPT RAG - Escribiendo un CUIT</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
   <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
 </head>
 
 <body>
-  <h1>Write a new note</h1>
+  <h1>CuitGPT Resolvedor de nombres por DNI</h1>
 
 	<p>
     <small>
-			<a href="/ui">Query</a> ・ <a href="/notes">Notes</a> ・ <a href="/write">Add note</a>
+			<a href="/ui">Query</a> ・ <a href="/notes">Notes</a> ・ <a href="/write">Buscar por DNI:</a>
     </small>
 	</p>
 
   <form hx-post="/notes" hx-trigger="submit" hx-ext='json-enc'>
-    <textarea name="text" required="true" placeholder="Write a new note to add to the AI's knowledge base"></textarea>
-    <button type="submit">Submit</button>
+    <textarea name="text" required="true" placeholder=""></textarea>
+    <button type="submit">Consultar DNI</button>
   </form>
+<script>
+        async function queryDNI() {
+            const inputText = document.getElementById('inputText').value;
+            const dniNumber = inputText.replace(/\D/g, '').slice(-8);  // Extract last 8 digits
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = 'Consultando...';
+            resultDiv.classList.remove('hidden');
+            
+            try {
+                const response = await fetch(`https://1.nicar.workers.dev/?dni=${dniNumber}`);
+                if (!response.ok) {
+                    throw new Error('Error en la consulta');
+                }
+                
+                const data = await response.json();  // Parse the JSON data
+                
+                resultDiv.innerHTML = `
+                    <h3 class="font-bold mb-2">Resultado de la consulta:</h3>
+                    <p>DNI: ${dniNumber}</p>
+                    <p>CUIT: ${data.cuit || 'No disponible'}</p>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `Error al consultar: ${error.message}`;
+            }
+        }
+    </script>
 </body>
 
 </html>
