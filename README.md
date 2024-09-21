@@ -3,7 +3,6 @@
 
 [CuitGPT](https://cuitgpt.nicar.workers.dev)
 
-## Recuperador Aumentado de nombres Argentinos mediante el ingreso de CUIT/CUIL y DNI.
 Dando la posibilidad de conectar el endpoint a cualquier webhook que se tenga para la interacciòn entre ellos y la Retroalimentación.
 ![CuitGPT Logo](https://github.com/starlinktuc/rag/blob/main/CuitGPT_Logo_FINAL.png?raw=true)
 #Bajar Wrangler CLI desde Cloudflare: 
